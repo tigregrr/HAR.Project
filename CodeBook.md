@@ -80,6 +80,9 @@ Activity
    
    f)	"LAYING".
 
+   
+   
+   
 time_BodyAcc_mean()_X
 
 	Mean of Body Accuracy of X in Time domain
