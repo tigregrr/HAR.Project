@@ -74,15 +74,19 @@ Activity
    f)	"LAYING".
 
 time_BodyAcc_mean()_X
+
 	Mean of Body Accuracy of X in Time domain
 
 time_BodyAcc_mean()_Y
+
 	Mean of Body Accuracy of Y in Time domain
 
 time_BodyAcc_mean()_Z
+
 	Mean of Body Accuracy of Z in Time domain
 
 time_GravityAcc_mean()_X
+
 	Mean of Gravity Accuracy of X in Time domain
 
 time_GravityAcc_mean()_Y
