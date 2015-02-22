@@ -102,9 +102,9 @@ i) Rows names for the descriptive activities are given in the
 	"LAYING"
 
 ==================================================================
-3. Extract only the measurements on the mean and standard deviation
-   for each measurement.
-==================================================================
+4. Extract only the measurements on the Mean and Standard Deviation.
+==================================================================	
+
 
 j) Generate a "index" to extract columns with mean and standard 
    deviation. Use the grepl() function into the features data 
