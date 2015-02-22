@@ -84,7 +84,7 @@ g) Clean the name of the column names. The column names have some
    561 for sensing variables, one for Volunteer, and one for Activity,  
 
 ==================================================================
-2. Use descriptive activity names to name the activities in the data set.
+3. Use descriptive activity names to name the activities in the data set.
 ==================================================================
 h) Columns names are given in the features.txt. It contains the 561 
    variables names. Extract the column name and add the two names for 
@@ -102,7 +102,7 @@ i) Rows names for the descriptive activities are given in the
 	"LAYING"
 
 ==================================================================
-4. Extract only the measurements on the Mean and Standard Deviation.
+2. Extract only the measurements on the Mean and Standard Deviation.
 ==================================================================	
 
 
