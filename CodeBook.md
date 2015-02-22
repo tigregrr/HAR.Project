@@ -34,6 +34,7 @@ Data Set and Experiment Description
 ==================================================================
 
 Volunteer
+
 	1	Train Group
 	2	Test Group
 	3	Train Group
@@ -66,6 +67,7 @@ Volunteer
 	30	Train Group
 
 Activity
+
    a)	"WALKING".
    b)	"WALKING_UPSTAIRS".
    c)	"WALKING_DOWNSTAIRS".
@@ -90,135 +92,179 @@ time_GravityAcc_mean()_X
 	Mean of Gravity Accuracy of X in Time domain
 
 time_GravityAcc_mean()_Y
+
 	Mean of Gravity Accuracy of Y in Time domain
 
 time_GravityAcc_mean()_Z
+
 	Mean of Gravity Accuracy of Z in Time domain
 
 time_BodyAccJerk_mean()_X
+
 	Mean of Body Accuracy Jerk of X in Time domain
 
 time_BodyAccJerk_mean()_Y
+
 	Mean of Body Accuracy Jerk of Y in Time domain
 
 time_BodyAccJerk_mean()_Z
+
 	Mean of Body Accuracy Jerk of Z in Time domain
 
 time_BodyGyro_mean()_X
+
 	Mean of Body Gyroscope of X in Time domain
 
 time_BodyGyro_mean()_Y
+
 	Mean of Body Gyroscope of Y in Time domain
 
 time_BodyGyro_mean()_Z
+
 	Mean of Body Gyroscope of Z in Time domain
 
 time_BodyGyroJerk_mean()_X
+
 	Mean of Body Gyroscope Jerk of X in Time domain
 
 time_BodyGyroJerk_mean()_Y
+
 	Mean of Body Gyroscope Jerk of Y in Time domain
 
 time_BodyGyroJerk_mean()_Z
+
 	Mean of Body Gyroscope Jerk of Z in Time domain
 
 freq_BodyAcc_mean()_X
+
 	Mean of Body Accuracy of X in Frequency domain
 
 freq_BodyAcc_mean()_Y
+
 	Mean of Body Accuracy of Y in Frequency domain
 
 freq_BodyAcc_mean()_Z
+
 	Mean of Body Accuracy of Z in Frequency domain
 
 freq_BodyAccJerk_mean()_X
+
 	Mean of Body Accuracy Jerk of X in Frequency domain
 
 freq_BodyAccJerk_mean()_Y
+
 	Mean of Body Accuracy Jerk of Y in Frequency domain
 
 freq_BodyAccJerk_mean()_Z
+
 	Mean of Body Accuracy Jerk of Z in Frequency domain
 
 freq_BodyGyro_mean()_X
+
 	Mean of Body Gyroscope of X in Frequency domain
 
 freq_BodyGyro_mean()_Y
+
 	Mean of Body Gyroscope of Y in Frequency domain
 
 freq_BodyGyro_mean()_Z
+
 	Mean of Body Gyroscope of Z in Frequency domain
 
 time_BodyAcc_std()_X
+
 	Standard Deviation of Body Accuracy of X in Time domain
 
 time_BodyAcc_std()_Y
+
 	Standard Deviation of Body Accuracy of Y in Time domain
 
 time_BodyAcc_std()_Z
+
 	Standard Deviation of Body Accuracy of Z in Time domain
 
 time_GravityAcc_std()_X
+
 	Standard Deviation of Gravity Accuracy of X in Time domain
 
 time_GravityAcc_std()_Y
+
 	Standard Deviation of Gravity Accuracy of Y in Time domain
 
 time_GravityAcc_std()_Z
+
 	Standard Deviation of Gravity Accuracy of Z in Time domain
 
 time_BodyAccJerk_std()_X
+
 	Standard Deviation of Gravity Accuracy Jerk of X in Time domain
 
 time_BodyAccJerk_std()_Y
+
 	Standard Deviation of Gravity Accuracy Jerk of Y in Time domain
 
 time_BodyAccJerk_std()_Z
+
 	Standard Deviation of Gravity Accuracy Jerk of Z in Time domain
 
 time_BodyGyro_std()_X
+
 	Standard Deviation of Body Gyroscope of X in Time domain
 
 time_BodyGyro_std()_Y
+
 	Standard Deviation of Body Gyroscope of Y in Time domain
 
 time_BodyGyro_std()_Z
+
 	Standard Deviation of Body Gyroscope of Z in Time domain
 
 time_BodyGyroJerk_std()_X
+
 	Standard Deviation of Body Gyroscope Jerk of X in Time domain
 
 time_BodyGyroJerk_std()_Y
+
 	Standard Deviation of Body Gyroscope Jerk of Y in Time domain
 
 time_BodyGyroJerk_std()_Z
+
 	Standard Deviation of Body Gyroscope Jerk of Z in Time domain
 
 freq_BodyAcc_std()_X
+
 	Standard Deviation of Body Accuracy of X in Frequency domain
 
 freq_BodyAcc_std()_Y
+
 	Standard Deviation of Body Accuracy of Y in Frequency domain
 
 freq_BodyAcc_std()_Z
+
 	Standard Deviation of Body Accuracy of Z in Frequency domain
 
 freq_BodyAccJerk_std()_X
+
 	Standard Deviation of Body Accuracy Jerk of X in Frequency domain
 
 freq_BodyAccJerk_std()_Y
+
 	Standard Deviation of Body Accuracy Jerk of Y in Frequency domain
 
 freq_BodyAccJerk_std()_Z
+
 	Standard Deviation of Body Accuracy Jerk of Z in Frequency domain
 
 freq_BodyGyro_std()_X
+
 	Standard Deviation of Body Gyroscope of X in Frequency domain
 	
 freq_BodyGyro_std()_Y
+
 	Standard Deviation of Body Gyroscope of Y in Frequency domain
 
 freq_BodyGyro_std()_Z
+
 	Standard Deviation of Body Gyroscope of Z in Frequency domain
    
   
