@@ -2,13 +2,16 @@
 
 
 ###########################################
-# 1 CREATE ONE DATA SET
+# 1 MERGE THE TRAINING AND TEST SETS TO 
+#   CREATE ONE DATA SET
 ###########################################
 
   wd <-getwd()
-# a) MERGING THE TEST AND TRAINING SETS TO CREATE ONE DATA SET
 
-  # TEST
+# a) Read the test, training sets for x, y, and subject. 
+
+
+  # TEST  ###########################################
   # test data set for x  
   test.file.x <- "\\UCI HAR Dataset\\test\\X_test.txt"
   test.path.x <- file.path(wd, test.file.x, fsep="")
@@ -28,7 +31,7 @@
   dim(test.s)
 
 
-  # TRAINING
+  # TRAINING  ######################################
   # training data set for x
   training.file.x <- "\\UCI HAR Dataset\\train\\X_train.txt"
   training.path.x <- file.path(wd, training.file.x, fsep="")
@@ -48,7 +51,9 @@
   dim(train.s)
 
 
-# b) MERGE DATA 
+
+# b) Merge the test.x with the training.x to create the data.x
+#    The same criteria for data.y and data.s
 
   # merge data: x 
   data.x <- rbind(test.x, train.x)
@@ -58,49 +63,55 @@
   data.y <- rbind(test.y, train.y)
   dim(data.y)
 
-
   # merge data: subject 
   data.s <- rbind(test.s, train.s)
   dim(data.s)
 
 
-  # merge data.x, data.y, and data.s to create one data set
-  #data.set <- data.frame(data.s, y.descriptive, data.x.mean.stddev)
+
+# c) Merge data.x, data.y, and data.s to create one data set
   data.set <- data.frame(data.s, data.y, data.x)
   dim(data.set);
-  View(data.set)
 
 
-# d) analyzing data.s: it has thirty items which correspond to the volunteers
+# d) analyzing data.s: it has 30 items which correspond to the 30 volunteers
   elements.s <- unique(data.s)
   dim(elements.s)
 
 
-# e) analyzing data.y: it has six items which correspond to the activities
+# e) analyzing data.y: it has 6 items which correspond to the 6 activities
   elements.y <- unique(data.y)
   dim(elements.y)
 
 
-# f) features and column names
+# f) analyzing features file: it has 561 items which correspond to 
+#    the 561 column names of the data set (data.set)
   features.file <- "\\UCI HAR Dataset\\features.txt"
   features.path <- file.path(wd, features.file, fsep="")
   features <- read.csv(features.path, header=FALSE, sep="")
   dim(features)
 
 
+# g) Clean the column names to legalize the proper variable names according to R.
+  clean.name <- features
+  clean.name <- sapply(clean.name,gsub,pattern="-",replacement="_")
+  clean.name <- sapply(clean.name,gsub,pattern=",",replacement=".")
+  clean.name <- clean.name[562:1122]
+  features$V2 <- clean.name
+
 
 ###########################################
-# 2 NAME COLUMNS AND ROWS
+# 2 USE DESCRIPTIVE ACTIVITY NAMES TO NAME ACTIVITIES IN THE DATA SET
 ###########################################
 
-# g) rename the columns for features in the data set
+# h) rename the columns for features in the data set
   features.names <- features$V2
   features.names <- as.vector(features.names)
   column.titles <- append(features.names, c("Volunteer","Activity"), after=0)
   colnames(data.set) <- column.titles
 
 
-# h) rename the column for activities in the data set
+# i) rename the column for activities in the data set
   y.vector <- as.vector(as.matrix(data.y))
   data.set$Activity <- (y.vector=as.factor(c("WALKING",
                             "WALKING_UPSTAIRS","WALKING_DOWNSTAIRS",
@@ -112,19 +123,22 @@
 # 3 EXTRACT COLUMNS WITH MEAN AND STANDARD-DEVIATION
 ###########################################
 
-# i) EXTRACT COLUMNS WITH MEAN AND STANDARD DEVIATION MEASUREMENT
-  # select a set of columns names with mean measurement from features data set
+# j) select a set of columns names with mean measurement from features data set
   mean.list <- features[grepl(pattern="mean", x=features$V2, fixed=TRUE), ]
+
 
   # select a set of columns names with standard deviation measurement from features data set
   std.dev.list <- features[grepl(pattern="std", x=features$V2, fixed=TRUE), ]
 
-  # merge a set of columns names with mean and standard deviation measurement
-  mean.std.colnames <- rbind (mean.list, std.dev.list)
-  dim(mean.std.colnames)
 
-# j) View(std.dev.list);View(mean.list);View(mean.std.colnames)
-  index <- mean.std.colnames$V1
+  # merge a set of columns names with mean and standard deviation measurement
+  mean.stdev <- rbind (mean.list, std.dev.list)  #79 observations
+  dim(mean.stdev)
+  
+
+
+# k) In the index, add two items: one for Volunteer and one for Activity
+  index <- mean.stdev$V1
   index <- as.matrix(index)
   index <- apply(index, 2, function(x) x=x+2)
   index <- as.numeric(index)
@@ -132,30 +146,60 @@
   dim(index)
 
 
-# k) subset the data frame to get a data set only containing the mean 
+# l) subset the data frame to get a data set only containing the mean 
 #    and standard desviation measurements 
   index <- as.numeric(index)
   ds.mean.sd <- subset(data.set, select=index)
   dim(ds.mean.sd)
-  View(ds.mean.sd)
+  
+
+# No consider variables for Mag, and meanFreq
+  Mag.list <- mean.stdev[grepl(pattern="Mag", x=mean.stdev$V2, fixed=TRUE),]
+  drops <- Mag.list$V2
+  ds.mean.sd <- ds.mean.sd[,!(names(ds.mean.sd) %in% drops)] 
+  dim(ds.mean.sd)
+
+  meanFreq <- mean.stdev[grepl(pattern="meanFreq", x=mean.stdev$V2, fixed=TRUE),]
+  drops <- meanFreq$V2
+  ds.mean.sd <- ds.mean.sd[,!(names(ds.mean.sd) %in% drops)] 
+  dim(ds.mean.sd)
+
+
 
 
 ###########################################
 # 4 APPROPRIATELY LABELS THE DATA SET WITH DESCRIPTIVE VARIABLES NAMES
 ###########################################  
 
-# l) name the volunter and activities appropiately 
-  ds.mean.sd$Volunter_Activity <- paste(ds.mean.sd$Volunteer, 
-                                        ds.mean.sd$Activity, sep="-")
+# m) name the column variable names friendlier  
+  labels <- names(ds.mean.sd)
+  labels <- sapply(labels,gsub,pattern="tBody",replacement="time_Body")
+  labels <- sapply(labels,gsub,pattern="tGravity",replacement="time_Gravity")
+  labels <- sapply(labels,gsub,pattern="fBody",replacement="freq_Body")
+  names(ds.mean.sd) <- labels
+ 
 
 
 ###########################################
 # 5 FROM THE DATA SET IN 4) CREATE A TIDY DATA SET
 ###########################################  
 
-# k) 
+# n) Create a tidy data 
 
+  ds.mean.sd$Volunter_Activity <- paste(ds.mean.sd$Volunteer, 
+                                      ds.mean.sd$Activity, sep="-")
   tidy <- aggregate(. ~ Volunter_Activity, data=ds.mean.sd, mean)
-  tidy <- tidy[,-c(2:3)]
-  dim(tidy)
-  View(tidy)
+  tidy <- tidy[,-c(1)]
+
+  tidy$Activity <- (act.vector=as.factor(c("WALKING",
+                                           "WALKING_UPSTAIRS","WALKING_DOWNSTAIRS",
+                                           "SITTING","STANDING","LAYING")[act.vector]))
+  tidy <- tidy[with(tidy, order(Volunteer, Activity)), ]
+
+#
+#
+#
+#
+#
+#
+#
