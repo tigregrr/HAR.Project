@@ -68,11 +68,16 @@ Volunteer
 
 Activity
 
-   a)	"WALKING".
+   a)	"WALKING"
+   
    b)	"WALKING_UPSTAIRS".
+   
    c)	"WALKING_DOWNSTAIRS".
+   
    d)	"SITTING".
+   
    e)	"STANDING".
+   
    f)	"LAYING".
 
 time_BodyAcc_mean()_X
